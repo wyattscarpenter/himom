@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+<body>
+<!-- This price calculator was made by Wyatt S Carpenter, for his mother. It is released into the public domain under CC0. -->
+
+<input id="inp" onchange="calculate()"></input>
+<p>
+  base price is <span id="base_price"></span><br>
+  base price with consultant discount is <span id="discounted"></span> (30% discount)<br>
+  shipping is <span id="shipping"></span> (7%) or <span id="shipping2"></span> (8.5%)<br>
+  tax (10%) on all of that is <span id="tax"></span> or <span id="tax2"></span><br>
+  discounted price + shipping + tax = <span id="total"></span> or <span id="total2"></span><br>
+</p>
+
+<script>
+  function calculate(){
+      _base_price = inp.value
+      _consultant_discount = .7
+      _discounted = _consultant_discount*_base_price
+      _shipping = _base_price * .07
+      _shipping2 = _base_price * .085
+      _tax = (_shipping+_discounted) * 0.1
+      _tax2 = (_shipping2+_discounted) * 0.1
+      _total = _tax + _shipping + _discounted
+      _total2 = _tax2 + _shipping2 + _discounted
+      display()
+  }
+  function display(){
+      base_price.innerHTML = _base_price
+      discounted.innerHTML = _discounted
+      shipping.innerHTML = _shipping
+      shipping2.innerHTML = _shipping2
+      tax.innerHTML = _tax
+      tax2.innerHTML = _tax2
+      total.innerHTML = _total
+      total2.innerHTML = _total2
+  }
+
+//((price*.7)+price*(.07 OR 0.085))*1.1 ?
+</script>
+</body>
+</html>
