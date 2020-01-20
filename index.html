@@ -20,7 +20,7 @@
       return (+n).toFixed(2)
   }
   function calculate(){
-      _base_price = +inp.value
+      _base_price = eval('"use strict";'+inp.value)//strict to avoid octal pitfall
       _consultant_discount = .7
       _discounted = _consultant_discount*_base_price
       _shipping = _base_price * .07
