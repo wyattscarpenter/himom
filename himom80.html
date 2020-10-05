@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+<body>
+<!-- This price calculator was made by Wyatt S Carpenter, for his mother. It is released into the public domain under CC0. -->
+
+<input id="inp" onchange="calculate()"></input>
+<p>
+  retail price is $<span id="base_price"></span><br>
+  price with consultant discount is $<span id="discounted"></span> (30% discount)<br>
+  CM shipping is $<span id="shipping"></span> (7%)<br>
+  tax (10%) on all of that is $<span id="tax"></span><br>
+  discounted price + shipping + tax = $<span id="total"></span><br>
+  80% of that = $<span id="p80"></span><br>
+</p>
+
+<script>
+  function r(n){
+      return (+n).toFixed(2)
+  }
+  function calculate(){
+      _base_price = eval('"use strict";'+inp.value)//strict to avoid octal pitfall
+      _consultant_discount = .7
+      _discounted = _consultant_discount*_base_price
+      _shipping = _base_price * .07
+      _tax = (_shipping+_base_price) * 0.1
+      _total = _tax + _shipping + _discounted
+      _p80 = _total * .80
+      display()
+  }
+  function display(){
+      base_price.innerHTML = r(_base_price)
+      discounted.innerHTML = r(_discounted)
+      shipping.innerHTML = r(_shipping)
+      tax.innerHTML = r(_tax)
+      total.innerHTML = r(_total)
+      p80.innerHTML = r(_p80)
+  }
+</script>
+</body>
+</html>
